@@ -17,7 +17,10 @@ namespace :infrastructure do
     end
 
     t.vars = lambda do |args|
-      {deployment_id: args.deployment_id}
+      {
+          deployment_id: args.deployment_id,
+          domain_name: "studentrobotics.dev"
+      }
     end
   end
 end
