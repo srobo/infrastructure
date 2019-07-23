@@ -42,6 +42,13 @@ resource "digitalocean_record" "google_5" {
   priority = 40
 }
 
+resource "digitalocean_record" "old-root" {
+  domain = "${digitalocean_domain.domain-name.name}"
+  type = "A"
+  name = "gcloud"
+  value = "104.155.107.130"
+}
+
 resource "digitalocean_record" "www" {
   domain = "${digitalocean_domain.domain-name.name}"
   type = "CNAME"
