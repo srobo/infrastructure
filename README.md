@@ -50,6 +50,13 @@ Ocean setup.
    ```bash
    $ doctl k8s cluster kubeconfig save application-cluster-development
    ```
+   
+### Network Security
+
+The kubernetes provisioning brings up a firewall for the nodes, exposing every
+port above 30000 to the outside world. For StudentRobotics this isn't ideal, so
+it's been adjusted manually in the DigitalOcean account so only the load 
+balancer can speak to the nodes directly.
 
 ## Managing tfstate
 
