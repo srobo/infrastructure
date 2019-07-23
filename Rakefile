@@ -1,3 +1,4 @@
+require 'yaml'
 require 'rake_terraform'
 
 RakeTerraform.define_installation_tasks(
@@ -17,10 +18,8 @@ namespace :infrastructure do
     end
 
     t.vars = lambda do |args|
-      {
-          deployment_id: args.deployment_id,
-          domain_name: "studentrobotics.co.uk"
-      }
+      args.to_hash
+          .merge(YAML.load_file("config/#{args.deployment_id}.yaml"))
     end
   end
 end
