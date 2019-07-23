@@ -3,6 +3,15 @@
 This is to provision the base cluster and domain for Student Robotics' Digital
 Ocean setup.
 
+## Contents
+
+* A kubernetes cluster, with a node pool of one instance
+* A load balancer, which balances HTTPS requests to port 30000 on each node in
+  the pool. Right now it terminates SSL, so it's expected the pool is private.
+* A DigitalOcean _domain_, which forwards the domain name to the load balancer.
+  You'll need to delegate to DigitalOcean from your DNS provider.
+* A Lets Encrypt certificate for the domain
+
 ## Getting Started
 
 * [ruby][ruby] and [bundler][bundler]
