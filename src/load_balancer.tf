@@ -1,7 +1,10 @@
 resource "digitalocean_certificate" "public-certificate" {
   name = "public-certificate-${var.deployment_id}"
   type = "lets_encrypt"
-  domains = ["${digitalocean_domain.domain-name.name}"]
+  domains = [
+    "${digitalocean_domain.domain-name.name}",
+    "www.${digitalocean_domain.domain-name.name}"
+  ]
 }
 
 resource "digitalocean_loadbalancer" "public-load-balancer" {
