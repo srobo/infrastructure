@@ -42,6 +42,19 @@ Ocean setup.
    $ doctl k8s cluster kubeconfig save application-cluster-development
    ```
 
+## Managing tfstate
+
+Running Terraform generates state files, which represent what Terraform is
+responsible for, and stops it modifying or deleting things it doesn't know 
+about. When you provision the environment, it will generate some state files, 
+and place them in the `state` directory. 
+
+For StudentRobotics, this state currently lives in DigitalOcean Spaces. Meaning
+when you want to provision the environment, you need to download the latest
+version from there and upload it when you're done.
+
+Not ideal, and can definitely be improved.
+
 [ruby]: https://www.ruby-lang.org/en/documentation/installation/
 [bundler]: https://bundler.io/#getting-started
 [doctl]: https://github.com/digitalocean/doctl#installing-doctl
