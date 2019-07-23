@@ -1,5 +1,5 @@
 resource "digitalocean_certificate" "public-certificate" {
-  name = "public-certificate"
+  name = "public-certificate-${var.deployment_id}"
   type = "lets_encrypt"
   domains = ["${digitalocean_domain.domain-name.name}"]
 }
@@ -7,7 +7,7 @@ resource "digitalocean_certificate" "public-certificate" {
 resource "digitalocean_loadbalancer" "public-load-balancer" {
   name = "load-balancer-${var.deployment_id}"
   region = "${var.region}"
-  droplet_tag = "application-cluster"
+  droplet_tag = "application-cluster-${var.deployment_id}"
 
   redirect_http_to_https = true
 
@@ -26,4 +26,11 @@ resource "digitalocean_loadbalancer" "public-load-balancer" {
     protocol = "http"
     path = "/"
   }
+}
+
+resource "digitalocean_record" "root-to-load-balancer" {
+  domain = "${digitalocean_domain.domain-name.name}"
+  type = "A"
+  name = "@"
+  value = "${digitalocean_loadbalancer.public-load-balancer.ip}"
 }
