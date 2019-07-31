@@ -174,3 +174,10 @@ resource "digitalocean_record" "google-site-verification" {
   type = "TXT"
   value = "9C-IE01HD-UTpvXzlXD1K6hjFnAznMTIjUWk_3P9tL4"
 }
+
+resource "digitalocean_record" "github-domain-verification" {
+  domain = "${digitalocean_domain.domain-name.name}"
+  name = "_github-challenge-srobo"
+  type = "TXT"
+  value = "b9c93bd328"
+}
