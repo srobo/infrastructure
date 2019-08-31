@@ -174,3 +174,10 @@ resource "digitalocean_record" "google-site-verification" {
   type = "TXT"
   value = "9C-IE01HD-UTpvXzlXD1K6hjFnAznMTIjUWk_3P9tL4"
 }
+
+resource "digitalocean_record" "runbook" {
+  domain = "${digitalocean_domain.domain-name.name}"
+  name = "runbook"
+  type = "CNAME"
+  value = "srobo.github.io."
+}
