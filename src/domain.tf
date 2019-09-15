@@ -179,5 +179,5 @@ resource "digitalocean_record" "github-domain-verification" {
   domain = "${digitalocean_domain.domain-name.name}"
   name = "_github-challenge-srobo"
   type = "TXT"
-  value = "b9c93bd328"
+  value = "d4896eb49e"
 }
