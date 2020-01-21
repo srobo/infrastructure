@@ -158,14 +158,21 @@ resource "digitalocean_record" "spf" {
   domain = "${digitalocean_domain.domain-name.name}"
   name = "@"
   type = "TXT"
-  value = "v=spf1 include:_spf.google.com ~all"
+  value = "v=spf1 include:_spf.google.com include:servers.mcsv.net ~all"
 }
 
-resource "digitalocean_record" "dkim" {
+resource "digitalocean_record" "google-dkim" {
   domain = "${digitalocean_domain.domain-name.name}"
   name = "google._domainkey"
   type = "TXT"
   value = "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCuOyyhoq+od+oiWNXV3po15wdDG9NaWa2oDvDW2tjA5A6yKMd57PT8TBZModroUSWllBYj9v1SPONR/W3TiCBlKT3CmgifGAVoFohkVQAspegbVVt3xpgNaNZfrEtPCKzUm/opSJAzUPETzpfbWfgo3jHGWKOV9dtzE2dwFQL5MwIDAQAB"
+}
+
+resource "digitalocean_record" "mailchimp-dkim" {
+  domain = "${digitalocean_domain.domain-name.name}"
+  name = "k1._domainkey"
+  type = "CNAME"
+  value = "dkim.mcsv.net"
 }
 
 resource "digitalocean_record" "google-site-verification" {
