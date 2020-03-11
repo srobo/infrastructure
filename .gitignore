@@ -1,3 +1,5 @@
 build/
 vendor/
 state/
+.terraform/
+terraform.tfstate.d/

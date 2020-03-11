@@ -14,7 +14,7 @@ Ocean setup.
 
 ## Getting Started
 
-* [ruby][ruby] and [bundler][bundler]
+* Terraform `>=0.12.0
 
 ### Provisioning
 
@@ -23,22 +23,34 @@ Ocean setup.
 2. [Create an API key][dotoken]
 
 3. Export the token on your command line
-   
+
    ```bash
    $ export DIGITALOCEAN_TOKEN=<your token>
    ```
 
-4. Install the Gems
+4. Initialise terraform locally
 
    ```bash
-   $ bundle install
+   $ terraform init
    ```
 
-5. Provision the environment you want (currently development/production)
+4. Select your workspace
 
-    ```bash
-    $ rake main:provision[development]
-    ```
+   ```bash
+   $ terraform workspace new production
+   ```
+
+5. Plan your provision
+
+   ```bash
+   $ terraform plan
+   ```
+
+6. Apply your provision
+
+   ```bash
+   $ terraform apply
+   ```
 
 ### Interacting with Kubernetes
 
@@ -46,24 +58,24 @@ Ocean setup.
 2. Install [kubectl][kubectl] - to interact with the kubernetes cluster
 
 3. Switch to your newly created cluster for kubectl
-   
+
    ```bash
    $ doctl k8s cluster kubeconfig save application-cluster-development
    ```
-   
+
 ### Network Security
 
 The kubernetes provisioning brings up a firewall for the nodes, exposing every
 port above 30000 to the outside world. For StudentRobotics this isn't ideal, so
-it's been adjusted manually in the DigitalOcean account so only the load 
+it's been adjusted manually in the DigitalOcean account so only the load
 balancer can speak to the nodes directly.
 
 ## Managing tfstate
 
 Running Terraform generates state files, which represent what Terraform is
-responsible for, and stops it modifying or deleting things it doesn't know 
-about. When you provision the environment, it will generate some state files, 
-and place them in the `state` directory. 
+responsible for, and stops it modifying or deleting things it doesn't know
+about. When you provision the environment, it will generate some state files,
+and place them in the `terraform.tfstate.d` directory.
 
 For StudentRobotics, this state currently lives in DigitalOcean Spaces. Meaning
 when you want to provision the environment, you need to download the latest
@@ -71,8 +83,6 @@ version from there and upload it when you're done.
 
 Not ideal, and can definitely be improved.
 
-[ruby]: https://www.ruby-lang.org/en/documentation/installation/
-[bundler]: https://bundler.io/#getting-started
 [doctl]: https://github.com/digitalocean/doctl#installing-doctl
 [kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 [dotoken]: https://cloud.digitalocean.com/account/api/tokens

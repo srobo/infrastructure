@@ -1,5 +1,5 @@
 resource "digitalocean_certificate" "public-certificate" {
-  name = "public-certificate-${var.deployment_id}"
+  name = "public-certificate-${local.deployment_id}"
   type = "lets_encrypt"
   domains = [
     "${digitalocean_domain.domain-name.name}",
@@ -8,40 +8,40 @@ resource "digitalocean_certificate" "public-certificate" {
 }
 
 resource "digitalocean_loadbalancer" "public-load-balancer" {
-  name = "load-balancer-${var.deployment_id}"
-  region = "${var.region}"
-  droplet_tag = "application-cluster-${var.deployment_id}"
+  name        = "load-balancer-${local.deployment_id}"
+  region      = local.region
+  droplet_tag = "application-cluster-${local.deployment_id}"
 
   redirect_http_to_https = true
 
   forwarding_rule {
-    entry_port = 80
+    entry_port     = 80
     entry_protocol = "http"
 
-    target_port = 30000
+    target_port     = 30000
     target_protocol = "http"
   }
 
   forwarding_rule {
-    entry_port = 443
+    entry_port     = 443
     entry_protocol = "https"
 
-    target_port = 30000
+    target_port     = 30000
     target_protocol = "http"
 
-    certificate_id = "${digitalocean_certificate.public-certificate.id}"
+    certificate_id = digitalocean_certificate.public-certificate.id
   }
 
   healthcheck {
-    port = 30000
+    port     = 30000
     protocol = "http"
-    path = "/"
+    path     = "/"
   }
 }
 
 resource "digitalocean_record" "root-to-load-balancer" {
-  domain = "${digitalocean_domain.domain-name.name}"
-  type = "A"
-  name = "@"
-  value = "${digitalocean_loadbalancer.public-load-balancer.ip}"
+  domain = digitalocean_domain.domain-name.name
+  type   = "A"
+  name   = "@"
+  value  = digitalocean_loadbalancer.public-load-balancer.ip
 }
