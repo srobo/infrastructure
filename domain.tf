@@ -56,41 +56,6 @@ resource "digitalocean_record" "www" {
   value  = "studentrobotics.org."
 }
 
-resource "digitalocean_record" "patience" {
-  domain = digitalocean_domain.domain-name.name
-  type   = "A"
-  name   = "patience"
-  value  = "159.65.84.52"
-}
-
-resource "digitalocean_record" "patience-ipv6" {
-  domain = digitalocean_domain.domain-name.name
-  type   = "AAAA"
-  name   = "patience"
-  value  = "2a03:b0c0:1:e0::2a5:9001"
-}
-
-resource "digitalocean_record" "saffron" {
-  domain = digitalocean_domain.domain-name.name
-  type   = "A"
-  name   = "saffron"
-  value  = "178.79.191.169"
-}
-
-resource "digitalocean_record" "srcomp" {
-  domain = digitalocean_domain.domain-name.name
-  type   = "A"
-  name   = "srcomp"
-  value  = "46.101.10.75"
-}
-
-resource "digitalocean_record" "srcomp-ipv6" {
-  domain = digitalocean_domain.domain-name.name
-  type   = "AAAA"
-  name   = "srcomp"
-  value  = "2a03:b0c0:1:d0::aea:6001"
-}
-
 resource "digitalocean_record" "mail" {
   domain = digitalocean_domain.domain-name.name
   name   = "mail"
@@ -110,34 +75,6 @@ resource "digitalocean_record" "start" {
   name   = "start"
   type   = "CNAME"
   value  = "ghs.google.com."
-}
-
-resource "digitalocean_record" "gerrit" {
-  domain = digitalocean_domain.domain-name.name
-  name   = "gerrit"
-  type   = "CNAME"
-  value  = "saffron.studentrobotics.org."
-}
-
-resource "digitalocean_record" "git" {
-  domain = digitalocean_domain.domain-name.name
-  name   = "git"
-  type   = "CNAME"
-  value  = "saffron.studentrobotics.org."
-}
-
-resource "digitalocean_record" "svn" {
-  domain = digitalocean_domain.domain-name.name
-  name   = "svn"
-  type   = "CNAME"
-  value  = "saffron.studentrobotics.org."
-}
-
-resource "digitalocean_record" "trac" {
-  domain = digitalocean_domain.domain-name.name
-  name   = "trac"
-  type   = "CNAME"
-  value  = "saffron.studentrobotics.org."
 }
 
 resource "digitalocean_record" "ide" {
