@@ -2,7 +2,7 @@ resource "digitalocean_certificate" "public-certificate" {
   name = "public-certificate-${local.deployment_id}"
   type = "lets_encrypt"
   domains = [
-    "${digitalocean_domain.domain-name.name}",
+    digitalocean_domain.domain-name.name,
     "www.${digitalocean_domain.domain-name.name}"
   ]
 }
