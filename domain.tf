@@ -1,5 +1,5 @@
 resource "digitalocean_domain" "domain-name" {
-  name = local.domain_name
+  name = "studentrobotics.org"
 }
 
 resource "digitalocean_record" "google_1" {

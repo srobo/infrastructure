@@ -1,5 +1,5 @@
 resource "digitalocean_certificate" "public-certificate" {
-  name = "public-certificate-${local.deployment_id}"
+  name = "public-certificate-production"
   type = "lets_encrypt"
   domains = [
     digitalocean_domain.domain-name.name,
@@ -8,9 +8,9 @@ resource "digitalocean_certificate" "public-certificate" {
 }
 
 resource "digitalocean_loadbalancer" "public-load-balancer" {
-  name        = "load-balancer-${local.deployment_id}"
-  region      = local.region
-  droplet_tag = "application-cluster-${local.deployment_id}"
+  name        = "load-balancer-production"
+  region      = var.region
+  droplet_tag = "application-cluster-production"
 
   redirect_http_to_https = true
 

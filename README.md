@@ -34,12 +34,6 @@ Ocean setup.
    $ terraform init
    ```
 
-4. Select your workspace
-
-   ```bash
-   $ terraform workspace new production
-   ```
-
 5. Plan your provision
 
    ```bash
