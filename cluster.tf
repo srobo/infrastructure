@@ -1,7 +1,7 @@
 resource "digitalocean_kubernetes_cluster" "application-cluster" {
   name    = "application-cluster-${local.deployment_id}"
   region  = local.region
-  version = "1.14.4-do.0"
+  version = "1.14.4-do.1"
 
   node_pool {
     name       = "application-cluster-pool-${local.deployment_id}"
