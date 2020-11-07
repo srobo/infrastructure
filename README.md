@@ -28,19 +28,21 @@ Ocean setup.
    $ export DIGITALOCEAN_TOKEN=<your token>
    ```
 
-4. Initialise terraform locally
+4. `cd` into the `src` directory
+
+5. Initialise terraform locally
 
    ```bash
    $ terraform init
    ```
 
-5. Plan your provision
+6. Plan your provision
 
    ```bash
    $ terraform plan
    ```
 
-6. Apply your provision
+7. Apply your provision
 
    ```bash
    $ terraform apply
