@@ -14,7 +14,7 @@ Ocean setup.
 
 ## Getting Started
 
-* Terraform `>=0.12.0
+* Terraform `>=0.13.0
 
 ### Provisioning
 
