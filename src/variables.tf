@@ -1,4 +1,3 @@
-variable "deployment_id" {}
-
-variable "region" {}
-variable "domain_name" {}
+variable "region" {
+  default = "lon1"
+}
