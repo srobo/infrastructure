@@ -3,11 +3,7 @@
 This is to provision the base cluster and domain for Student Robotics' Digital
 Ocean setup.
 
-<<<<<<< HEAD
-<span color="red">Obsolete. Replaced by https://github.com/srobo/ansible/</span>
-=======
 **Obsolete. Replaced by https://github.com/srobo/ansible/**
->>>>>>> 5708b7a (This is obsolete)
 
 ## Contents
 
