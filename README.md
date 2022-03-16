@@ -3,6 +3,8 @@
 This is to provision the base cluster and domain for Student Robotics' Digital
 Ocean setup.
 
+<span color="red">Obsolete. Replaced by https://github.com/srobo/ansible/</span>
+
 ## Contents
 
 * A kubernetes cluster, with a node pool of one instance
